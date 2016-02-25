@@ -1,8 +1,11 @@
 package org.echg.transport.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by examiner on 2/25/16.
  */
+@XmlRootElement
 public class Address {
     private String feature;
     private String thoroughfare;

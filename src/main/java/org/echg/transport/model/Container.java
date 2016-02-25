@@ -1,10 +1,12 @@
 package org.echg.transport.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
  * Created by examiner on 1/4/16.
  */
+@XmlRootElement
 public class Container {
     private String barcode;
     private String barcodeFormat;

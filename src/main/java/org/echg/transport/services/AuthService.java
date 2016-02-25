@@ -11,19 +11,9 @@ import java.util.Base64;
  */
 public class AuthService {
 
-    public Authorization authorizeUser(String username, String password){
+    public Authorization authorizeUser(Authorization auth){
 
-        Authorization auth = new Authorization();
-        auth.setUsername(username);
-        auth.setPassword(password);
-
-        if(username.equals("jstarustka") && password.equals("mypassword")){
-            auth.setAuthorized(true);
-        }
-        else {
-            auth.setAuthorized(false);
-        }
-
+        System.out.println(auth.getUsername() + " " + auth.getPassword());
         return auth;
     }
 

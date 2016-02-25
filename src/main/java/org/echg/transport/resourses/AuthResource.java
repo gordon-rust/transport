@@ -15,10 +15,11 @@ public class AuthResource {
 
     private AuthService as = new AuthService();
 
-    @GET
-    public Authorization getAuth(@QueryParam("username")String username,@QueryParam("password") String password) {
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Authorization getAuth(Authorization auth) {
 
-        System.out.println(username);
-        return as.authorizeUser(username,password);
+        return as.authorizeUser(auth);
     }
 }
