@@ -1,7 +1,5 @@
 package org.echg.transport.resourses;
 
-import org.echg.transport.model.Address;
-import org.echg.transport.model.CodeValidator;
 import org.echg.transport.model.Trailer;
 import org.echg.transport.services.BarcodeService;
 
