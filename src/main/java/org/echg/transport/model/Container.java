@@ -6,31 +6,40 @@ import java.util.Date;
  * Created by examiner on 1/4/16.
  */
 public class Container {
-    private String code;
-    private Date scanned;
+    private String barcode;
+    private String barcodeFormat;
+    private Date scannedDate;
 
     public Container(){
 
     }
 
-    public Container(String code, Date scanned) {
-        this.code = code;
-        this.scanned = scanned;
+    public Container(String barcode, Date scannedDate) {
+        this.barcode = barcode;
+        this.scannedDate = scannedDate;
     }
 
-    public String getCode() {
-        return code;
+    public String getBarcode() {
+        return barcode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
-    public Date getScanned() {
-        return scanned;
+    public String getBarcodeFormat() {
+        return barcodeFormat;
     }
 
-    public void setScanned(Date scanned) {
-        this.scanned = scanned;
+    public void setBarcodeFormat(String barcodeFormat) {
+        this.barcodeFormat = barcodeFormat;
+    }
+
+    public Date getScannedDate() {
+        return scannedDate;
+    }
+
+    public void setScannedDate(Date scannedDate) {
+        this.scannedDate = scannedDate;
     }
 }

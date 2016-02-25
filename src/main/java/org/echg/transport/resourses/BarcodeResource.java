@@ -1,11 +1,13 @@
 package org.echg.transport.resourses;
 
+import org.echg.transport.model.Address;
 import org.echg.transport.model.CodeValidator;
 import org.echg.transport.model.Trailer;
 import org.echg.transport.services.BarcodeService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 
 /**
  * Created by examiner on 12/31/15.
@@ -17,16 +19,30 @@ public class BarcodeResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public CodeValidator checkBarcodeType(@PathParam("code")String code) {
+    public ArrayList<Trailer> queryAllTrailers() {
 
-        return bs.checkValidBarcode(code);
+        return bs.getAllTrailers();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Trailer insertTrailerData(Trailer trailer){
+    public Trailer insertLoadedTrailer(Trailer trailer){
 
-        return bs.addTrailerData(trailer);
+        return bs.insertTrailerData(trailer);
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Trailer insertUnloadedTrailer(Trailer trailer){
+
+        return bs.updateTrailerData(trailer);
+    }
+
+    @DELETE
+    @Path("/{barcode}")
+    public void deleteTrailer(@PathParam("barcode") String barcode) {
+        bs.removeBarcode(barcode);
     }
 }

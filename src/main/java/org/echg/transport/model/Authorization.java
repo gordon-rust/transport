@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Authorization {
-    private boolean authorized;
     private String username;
     private String password;
 
@@ -16,18 +15,9 @@ public class Authorization {
 
     }
 
-    public Authorization(boolean authorized, String username, String password) {
-        this.authorized = authorized;
+    public Authorization(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public boolean isAuthorized() {
-        return authorized;
-    }
-
-    public void setAuthorized(boolean authorized) {
-        this.authorized = authorized;
     }
 
     public String getUsername() {

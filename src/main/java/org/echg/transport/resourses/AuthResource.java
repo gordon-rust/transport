@@ -18,7 +18,7 @@ public class AuthResource {
     @GET
     public Authorization getAuth(@QueryParam("username")String username,@QueryParam("password") String password) {
 
-        System.out.println("Test");
+        System.out.println(username);
         return as.authorizeUser(username,password);
     }
 }

@@ -9,53 +9,63 @@ import java.util.Date;
  */
 @XmlRootElement
 public class Trailer {
-    private String trailerCode;
-    private Date depDateTime;
-    private long latitude;
-    private long longitude;
+    private String barcode;
+    private String barcodeFormat;
+    private Date scannedDate;
+    private boolean status;
+    private ArrayList<Address> addresses;
     private ArrayList<Container> containerList;
 
     public Trailer(){
     }
 
-    public Trailer(String trailerCode, Date depDateTime, long latitude, long longitude, ArrayList<Container> containerList) {
-        this.trailerCode = trailerCode;
-        this.depDateTime = depDateTime;
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Trailer(String barcode, String barcodeFormat, Date scannedDate, boolean status, ArrayList<Address> addresses, ArrayList<Container> containerList) {
+        this.barcode = barcode;
+        this.barcodeFormat = barcodeFormat;
+        this.scannedDate = scannedDate;
+        this.status = status;
+        this.addresses = addresses;
         this.containerList = containerList;
     }
 
-    public String getTrailerCode() {
-        return trailerCode;
+    public String getBarcode() {
+        return barcode;
     }
 
-    public void setTrailerCode(String trailerCode) {
-        this.trailerCode = trailerCode;
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
-    public Date getDepDateTime() {
-        return depDateTime;
+    public String getBarcodeFormat() {
+        return barcodeFormat;
     }
 
-    public void setDepDateTime(Date depDateTime) {
-        this.depDateTime = depDateTime;
+    public void setBarcodeFormat(String barcodeFormat) {
+        this.barcodeFormat = barcodeFormat;
     }
 
-    public long getLatitude() {
-        return latitude;
+    public Date getScannedDate() {
+        return scannedDate;
     }
 
-    public void setLatitude(long latitude) {
-        this.latitude = latitude;
+    public void setScannedDate(Date scannedDate) {
+        this.scannedDate = scannedDate;
     }
 
-    public long getLongitude() {
-        return longitude;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setLongitude(long longitude) {
-        this.longitude = longitude;
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public ArrayList<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(ArrayList<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public ArrayList<Container> getContainerList() {
