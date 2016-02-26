@@ -1,11 +1,13 @@
-package org.echg.transport.model;
+package org.echg.transport.model.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by examiner on 2/25/16.
  */
-@XmlRootElement
+@Entity
 public class Address {
     private String feature;
     private String thoroughfare;

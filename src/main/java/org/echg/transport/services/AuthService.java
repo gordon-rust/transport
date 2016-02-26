@@ -1,6 +1,6 @@
 package org.echg.transport.services;
 
-import org.echg.transport.model.Authorization;
+import org.echg.transport.model.pojo.Authorization;
 
 import java.nio.charset.Charset;
 import java.util.Base64;

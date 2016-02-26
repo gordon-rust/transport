@@ -1,6 +1,6 @@
 package org.echg.transport.resourses;
 
-import org.echg.transport.model.Trailer;
+import org.echg.transport.model.pojo.Trailer;
 import org.echg.transport.services.BarcodeService;
 
 import javax.ws.rs.*;

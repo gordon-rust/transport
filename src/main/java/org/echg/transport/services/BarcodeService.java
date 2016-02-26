@@ -1,13 +1,11 @@
 package org.echg.transport.services;
 
-import org.echg.transport.model.Address;
-import org.echg.transport.model.CodeValidator;
-import org.echg.transport.model.Container;
-import org.echg.transport.model.Trailer;
+import org.echg.transport.model.pojo.Address;
+import org.echg.transport.model.pojo.Container;
+import org.echg.transport.model.pojo.Trailer;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.Callable;
 
 /**
  * Created by examiner on 12/31/15.

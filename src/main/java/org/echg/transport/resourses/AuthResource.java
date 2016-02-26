@@ -1,6 +1,6 @@
 package org.echg.transport.resourses;
 
-import org.echg.transport.model.Authorization;
+import org.echg.transport.model.pojo.Authorization;
 import org.echg.transport.services.AuthService;
 
 import javax.ws.rs.*;

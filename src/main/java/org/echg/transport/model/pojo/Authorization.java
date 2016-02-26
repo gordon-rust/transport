@@ -1,4 +1,4 @@
-package org.echg.transport.model;
+package org.echg.transport.model.pojo;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
