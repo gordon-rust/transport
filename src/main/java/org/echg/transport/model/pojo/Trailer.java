@@ -1,13 +1,13 @@
 package org.echg.transport.model.pojo;
 
-import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by examiner on 1/4/16.
  */
-@Entity
+@XmlRootElement
 public class Trailer {
     private String barcode;
     private String barcodeFormat;
