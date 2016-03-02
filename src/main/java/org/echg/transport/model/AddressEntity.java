@@ -1,34 +1,35 @@
-package org.echg.transport.model.dto;
+package org.echg.transport.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by examiner on 2/26/16.
+ * Created by examiner on 3/2/16.
  */
 @Entity
-@Table(name="TRAILER")
-public class AddressDTO {
-    private int addressID;
+@Table(name = "Address", schema = "transport", catalog = "examiner")
+public class AddressEntity implements Serializable {
+    private int addressId;
     private String feature;
     private String thoroughfare;
     private String locality;
     private String admin;
     private String postal;
-    private double latitude;
-    private double longitude;
-    private int trailerID;
+    private Double latitude;
+    private Double longitude;
 
     @Id
-    @Column(name="ADDRESS_ID")
-    public int getAddressID() {
-        return addressID;
+    @Column(name = "ADDRESS_ID")
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setAddressID(int addressID) {
-        this.addressID = addressID;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
-    @Column(name="FEATURE")
+    @Basic
+    @Column(name = "FEATURE")
     public String getFeature() {
         return feature;
     }
@@ -37,7 +38,8 @@ public class AddressDTO {
         this.feature = feature;
     }
 
-    @Column(name="THOROUGHFARE")
+    @Basic
+    @Column(name = "THOROUGHFARE")
     public String getThoroughfare() {
         return thoroughfare;
     }
@@ -46,7 +48,8 @@ public class AddressDTO {
         this.thoroughfare = thoroughfare;
     }
 
-    @Column(name="LOCALITY")
+    @Basic
+    @Column(name = "LOCALITY")
     public String getLocality() {
         return locality;
     }
@@ -55,7 +58,8 @@ public class AddressDTO {
         this.locality = locality;
     }
 
-    @Column(name="ADMIN")
+    @Basic
+    @Column(name = "ADMIN")
     public String getAdmin() {
         return admin;
     }
@@ -64,7 +68,8 @@ public class AddressDTO {
         this.admin = admin;
     }
 
-    @Column(name="POSTAL")
+    @Basic
+    @Column(name = "POSTAL")
     public String getPostal() {
         return postal;
     }
@@ -73,30 +78,24 @@ public class AddressDTO {
         this.postal = postal;
     }
 
-    @Column(name="LATITUDE")
-    public double getLatitude() {
+    @Basic
+    @Column(name = "LATITUDE")
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    @Column(name="LONGITUDE")
-    public double getLongitude() {
+    @Basic
+    @Column(name = "LONGITUDE")
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    @ManyToOne
-    public int getTrailerID() {
-        return trailerID;
-    }
-
-    public void setTrailerID(int trailerID) {
-        this.trailerID = trailerID;
-    }
 }

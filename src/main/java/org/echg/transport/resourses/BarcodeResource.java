@@ -1,6 +1,7 @@
 package org.echg.transport.resourses;
 
-import org.echg.transport.model.pojo.Trailer;
+import org.echg.transport.model.ContainerEntity;
+import org.echg.transport.model.pojo.Container;
 import org.echg.transport.services.BarcodeService;
 
 import javax.ws.rs.*;
@@ -14,30 +15,30 @@ import java.util.ArrayList;
 public class BarcodeResource {
 
     private BarcodeService bs = new BarcodeService();
-
+/*
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Trailer> queryAllTrailers() {
+    public ArrayList<TrailerDTO> queryAllTrailers() {
 
         return bs.getAllTrailers();
     }
-
+*/
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Trailer insertLoadedTrailer(Trailer trailer){
-
-        return bs.insertTrailerData(trailer);
+    public ContainerEntity insertContainer(ContainerEntity trailer){
+        System.out.println("Insert");
+        return bs.insertContainerData(trailer);
     }
-
+/*
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Trailer insertUnloadedTrailer(Trailer trailer){
+    public boolean insertUnloadedTrailer(TrailerDTO trailer){
 
         return bs.updateTrailerData(trailer);
     }
-
+*/
     @DELETE
     @Path("/{barcode}")
     public void deleteTrailer(@PathParam("barcode") String barcode) {
