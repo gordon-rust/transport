@@ -1,10 +1,13 @@
 package org.echg.transport.model.dao;
 
 import org.echg.transport.database.HibernateUtil;
-import org.echg.transport.model.ContainerEntity;
+import org.echg.transport.model.dto.AddressEntity;
+import org.echg.transport.model.dto.ContainerEntity;
+import org.echg.transport.model.dto.TrailerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -36,14 +39,25 @@ public class TrailerDAO {
         return trailers;
     }*/
 
-    public boolean saveTrailer(ContainerEntity trailer) {
+    public boolean saveTrailer(TrailerEntity trailer) {
         Session session = null;
         boolean hasErrors = false;
 
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            session.saveOrUpdate(trailer);
+            session.save(trailer);
+
+            Iterator<AddressEntity> addrIterate = trailer.getAddresses().iterator();
+            while(addrIterate.hasNext()){
+                session.save(addrIterate.next());
+            }
+
+            Iterator<ContainerEntity> contIterate = trailer.getContainers().iterator();
+            while(addrIterate.hasNext()){
+                session.save(contIterate.next());
+            }
+
             session.getTransaction().commit();
         }
         catch (Exception ex){

@@ -1,7 +1,8 @@
 package org.echg.transport.services;
 
-import org.echg.transport.model.ContainerEntity;
 import org.echg.transport.model.dao.TrailerDAO;
+import org.echg.transport.model.dto.TrailerEntity;
+import org.echg.transport.model.pojo.Trailer;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.Date;
 public class BarcodeService {
     TrailerDAO trailerDAO = new TrailerDAO();
 
-    public ContainerEntity insertContainerData(ContainerEntity trailer){
+    public TrailerEntity insertTrailerData(TrailerEntity trailer){
         if(trailerDAO.saveTrailer(trailer)){
             System.out.println("Insert issue");
         }
