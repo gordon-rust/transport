@@ -3,6 +3,7 @@ package org.echg.transport.model.pojo;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by examiner on 1/4/16.
@@ -12,20 +13,18 @@ public class Trailer {
     private String barcode;
     private String barcodeFormat;
     private Date scannedDate;
-    private boolean status;
-    private ArrayList<Address> addresses;
-    private ArrayList<Container> containerList;
+    private Set<Address> addresses;
+    private Set<Container> containers;
 
     public Trailer(){
     }
 
-    public Trailer(String barcode, String barcodeFormat, Date scannedDate, boolean status, ArrayList<Address> addresses, ArrayList<Container> containerList) {
+    public Trailer(String barcode, String barcodeFormat, Date scannedDate, Set<Address> addresses, Set<Container> containers) {
         this.barcode = barcode;
         this.barcodeFormat = barcodeFormat;
         this.scannedDate = scannedDate;
-        this.status = status;
         this.addresses = addresses;
-        this.containerList = containerList;
+        this.containers = containers;
     }
 
     public String getBarcode() {
@@ -52,27 +51,19 @@ public class Trailer {
         this.scannedDate = scannedDate;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public ArrayList<Address> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(ArrayList<Address> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
 
-    public ArrayList<Container> getContainerList() {
-        return containerList;
+    public Set<Container> getContainers() {
+        return containers;
     }
 
-    public void setContainerList(ArrayList<Container> containerList) {
-        this.containerList = containerList;
+    public void setContainers(Set<Container> containers) {
+        this.containers = containers;
     }
 }

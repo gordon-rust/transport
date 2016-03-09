@@ -7,7 +7,6 @@ import java.io.Serializable;
 /**
  * Created by examiner on 3/4/16.
  */
-@XmlRootElement
 @Entity
 @Table(name = "address", schema = "transport", catalog = "examiner")
 public class AddressEntity implements Serializable{
@@ -32,7 +31,6 @@ public class AddressEntity implements Serializable{
         this.addressId = addressId;
     }
 
-    @Basic
     @Column(name = "admin")
     public String getAdmin() {
         return admin;
@@ -42,7 +40,6 @@ public class AddressEntity implements Serializable{
         this.admin = admin;
     }
 
-    @Basic
     @Column(name = "feature")
     public String getFeature() {
         return feature;
@@ -52,7 +49,6 @@ public class AddressEntity implements Serializable{
         this.feature = feature;
     }
 
-    @Basic
     @Column(name = "locality")
     public String getLocality() {
         return locality;
@@ -62,7 +58,6 @@ public class AddressEntity implements Serializable{
         this.locality = locality;
     }
 
-    @Basic
     @Column(name = "postal")
     public String getPostal() {
         return postal;
@@ -72,7 +67,6 @@ public class AddressEntity implements Serializable{
         this.postal = postal;
     }
 
-    @Basic
     @Column(name = "thoroughfare")
     public String getThoroughfare() {
         return thoroughfare;
@@ -82,7 +76,6 @@ public class AddressEntity implements Serializable{
         this.thoroughfare = thoroughfare;
     }
 
-    @Basic
     @Column(name = "latitude")
     public Double getLatitude() {
         return latitude;
@@ -92,7 +85,6 @@ public class AddressEntity implements Serializable{
         this.latitude = latitude;
     }
 
-    @Basic
     @Column(name = "longitude")
     public Double getLongitude() {
         return longitude;

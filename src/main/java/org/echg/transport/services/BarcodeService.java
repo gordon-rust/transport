@@ -1,11 +1,13 @@
 package org.echg.transport.services;
 
 import org.echg.transport.model.dao.TrailerDAO;
-import org.echg.transport.model.dto.TrailerEntity;
+import org.echg.transport.model.pojo.Address;
+import org.echg.transport.model.pojo.Container;
 import org.echg.transport.model.pojo.Trailer;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Created by examiner on 12/31/15.
@@ -13,7 +15,13 @@ import java.util.Date;
 public class BarcodeService {
     TrailerDAO trailerDAO = new TrailerDAO();
 
-    public TrailerEntity insertTrailerData(TrailerEntity trailer){
+    public Trailer insertTrailerData(Trailer trailer){
+        trailer.setScannedDate(new Date());
+        Iterator<Container> contIterate = trailer.getContainers().iterator();
+        while(contIterate.hasNext()) {
+            contIterate.next().setScannedDate(new Date());
+        }
+
         if(trailerDAO.saveTrailer(trailer)){
             System.out.println("Insert issue");
         }

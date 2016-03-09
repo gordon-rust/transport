@@ -1,8 +1,7 @@
 package org.echg.transport.resourses;
 
-import org.echg.transport.model.dto.ContainerEntity;
-import org.echg.transport.model.dto.TrailerEntity;
 import org.echg.transport.model.pojo.Container;
+import org.echg.transport.model.pojo.Trailer;
 import org.echg.transport.services.BarcodeService;
 
 import javax.ws.rs.*;
@@ -27,7 +26,7 @@ public class BarcodeResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public TrailerEntity insertTrailer(TrailerEntity trailer){
+    public Trailer insertTrailer(Trailer trailer){
         return bs.insertTrailerData(trailer);
     }
 /*

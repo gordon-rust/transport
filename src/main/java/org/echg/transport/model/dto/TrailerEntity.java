@@ -11,7 +11,6 @@ import java.util.*;
 /**
  * Created by examiner on 3/4/16.
  */
-@XmlRootElement
 @Entity
 @Table(name = "trailer", schema = "transport", catalog = "examiner")
 public class TrailerEntity implements Serializable{
@@ -34,7 +33,6 @@ public class TrailerEntity implements Serializable{
         this.trailerId = trailerId;
     }
 
-    @Basic
     @Column(name = "barcode")
     public String getBarcode() {
         return barcode;
@@ -44,7 +42,6 @@ public class TrailerEntity implements Serializable{
         this.barcode = barcode;
     }
 
-    @Basic
     @Column(name = "barcode_format")
     public String getBarcodeFormat() {
         return barcodeFormat;
@@ -54,7 +51,6 @@ public class TrailerEntity implements Serializable{
         this.barcodeFormat = barcodeFormat;
     }
 
-    @Basic
     @Column(name = "scanned_date")
     @Temporal(TemporalType.TIMESTAMP)
     public Date getScannedDate() {

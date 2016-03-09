@@ -1,5 +1,7 @@
 package org.echg.transport.model.dto;
 
+import org.echg.transport.model.pojo.Trailer;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -9,7 +11,6 @@ import java.util.Date;
 /**
  * Created by examiner on 3/4/16.
  */
-@XmlRootElement
 @Entity
 @Table(name = "container", schema = "transport", catalog = "examiner")
 public class ContainerEntity implements Serializable {
@@ -30,7 +31,6 @@ public class ContainerEntity implements Serializable {
         this.containerId = containerId;
     }
 
-    @Basic
     @Column(name = "barcode")
     public String getBarcode() {
         return barcode;
@@ -40,7 +40,6 @@ public class ContainerEntity implements Serializable {
         this.barcode = barcode;
     }
 
-    @Basic
     @Column(name = "barcode_format")
     public String getBarcodeFormat() {
         return barcodeFormat;
@@ -50,8 +49,8 @@ public class ContainerEntity implements Serializable {
         this.barcodeFormat = barcodeFormat;
     }
 
-    @Basic
     @Column(name = "scanned_date")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getScannedDate() {
         return scannedDate;
     }
