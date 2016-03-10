@@ -10,23 +10,59 @@ import org.echg.transport.model.pojo.Trailer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by examiner on 2/26/16.
  */
 public class TrailerDAO {
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-/*
-    public List<TrailerDTO> getAllTrailers() {
-        List<TrailerDTO> trailers = null;
+
+    public List<Trailer> getAllTrailers() {
+        List<TrailerEntity> trailers = null;
+        List<Trailer> trailersJSON = new ArrayList<>();
         Session session = null;
 
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            trailers = session.createQuery("from Trailer T").list();
+
+            trailers = session.createQuery("select t from TrailerEntity t").list();
+
+            for(int i=0; i<trailers.size(); i++){
+                Trailer t = new Trailer();
+                t.setBarcode(trailers.get(i).getBarcode());
+                t.setBarcodeFormat(trailers.get(i).getBarcodeFormat());
+                t.setScannedDate(trailers.get(i).getScannedDate());
+
+                List<Container> containers = new ArrayList<>();
+                for(ContainerEntity c:trailers.get(i).getContainers()){
+                    Container ce = new Container();
+                    ce.setScannedDate(c.getScannedDate());
+                    ce.setBarcode(c.getBarcode());
+                    ce.setBarcodeFormat(c.getBarcodeFormat());
+                    containers.add(ce);
+                }
+
+                List<Address> addresses = new ArrayList<>();
+                for(AddressEntity a:trailers.get(i).getAddresses()) {
+                    Address ae = new Address();
+                    ae.setFeature(a.getFeature());
+                    ae.setAdmin(a.getAdmin());
+                    ae.setLongitude(a.getLongitude());
+                    ae.setLatitude(a.getLatitude());
+                    ae.setThoroughfare(a.getThoroughfare());
+                    ae.setLocality(a.getLocality());
+                    ae.setPostal(a.getPostal());
+                    addresses.add(ae);
+                }
+
+                t.setAddresses(addresses);
+                t.setContainers(containers);
+                trailersJSON.add(t);
+            }
             session.getTransaction().commit();
         }
         catch(Exception ex) {
@@ -39,8 +75,8 @@ public class TrailerDAO {
                 session.close();
             }
         }
-        return trailers;
-    }*/
+        return trailersJSON;
+    }
 
     public boolean saveTrailer(Trailer trailer) {
         Session session = null;

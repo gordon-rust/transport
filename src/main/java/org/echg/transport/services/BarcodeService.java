@@ -1,6 +1,7 @@
 package org.echg.transport.services;
 
 import org.echg.transport.model.dao.TrailerDAO;
+import org.echg.transport.model.dto.TrailerEntity;
 import org.echg.transport.model.pojo.Address;
 import org.echg.transport.model.pojo.Container;
 import org.echg.transport.model.pojo.Trailer;
@@ -8,6 +9,7 @@ import org.echg.transport.model.pojo.Trailer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by examiner on 12/31/15.
@@ -33,12 +35,12 @@ public class BarcodeService {
     public boolean updateTrailerData(TrailerDTO trailer){
         return trailerDAO.saveTrailer(trailer);
     }
-
-    public ArrayList<TrailerDTO> getAllTrailers(){
-        // May need to convert trailer to trailer DTO
-        //return (ArrayList<TrailerDTO>) trailerDAO.getAllTrailers();
-    }
 */
+    public List<Trailer> getAllTrailers(){
+        // May need to convert trailer to trailer DTO
+        return (List<Trailer>) trailerDAO.getAllTrailers();
+    }
+
     public void removeBarcode(String barcode){
         System.out.println("Trailer with this barcode will be deleted " + barcode);
     }

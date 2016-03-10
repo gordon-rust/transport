@@ -1,12 +1,11 @@
 package org.echg.transport.resourses;
 
-import org.echg.transport.model.pojo.Container;
 import org.echg.transport.model.pojo.Trailer;
 import org.echg.transport.services.BarcodeService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by examiner on 12/31/15.
@@ -15,18 +14,19 @@ import java.util.ArrayList;
 public class BarcodeResource {
 
     private BarcodeService bs = new BarcodeService();
-/*
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<TrailerDTO> queryAllTrailers() {
+    public List<Trailer> queryAllTrailers() {
 
         return bs.getAllTrailers();
     }
-*/
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Trailer insertTrailer(Trailer trailer){
+
         return bs.insertTrailerData(trailer);
     }
 /*

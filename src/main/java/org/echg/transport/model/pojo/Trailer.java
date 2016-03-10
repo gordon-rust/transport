@@ -3,6 +3,7 @@ package org.echg.transport.model.pojo;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,13 +14,13 @@ public class Trailer {
     private String barcode;
     private String barcodeFormat;
     private Date scannedDate;
-    private Set<Address> addresses;
-    private Set<Container> containers;
+    private List<Address> addresses;
+    private List<Container> containers;
 
     public Trailer(){
     }
 
-    public Trailer(String barcode, String barcodeFormat, Date scannedDate, Set<Address> addresses, Set<Container> containers) {
+    public Trailer(String barcode, String barcodeFormat, Date scannedDate, List<Address> addresses, List<Container> containers) {
         this.barcode = barcode;
         this.barcodeFormat = barcodeFormat;
         this.scannedDate = scannedDate;
@@ -51,19 +52,19 @@ public class Trailer {
         this.scannedDate = scannedDate;
     }
 
-    public Set<Address> getAddresses() {
+    public List<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(Set<Address> addresses) {
+    public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
 
-    public Set<Container> getContainers() {
+    public List<Container> getContainers() {
         return containers;
     }
 
-    public void setContainers(Set<Container> containers) {
+    public void setContainers(List<Container> containers) {
         this.containers = containers;
     }
 }
