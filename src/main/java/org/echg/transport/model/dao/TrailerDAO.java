@@ -12,7 +12,6 @@ import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by examiner on 2/26/16.
@@ -36,6 +35,7 @@ public class TrailerDAO {
                 t.setBarcode(trailers.get(i).getBarcode());
                 t.setBarcodeFormat(trailers.get(i).getBarcodeFormat());
                 t.setScannedDate(trailers.get(i).getScannedDate());
+                t.setTrailerID(trailers.get(i).getTrailerId());
 
                 List<Container> containers = new ArrayList<>();
                 for(ContainerEntity c:trailers.get(i).getContainers()){
@@ -76,6 +76,61 @@ public class TrailerDAO {
             }
         }
         return trailersJSON;
+    }
+
+    public Trailer getTrailerByID(int id) {
+        Trailer t = new Trailer();
+        Session session = null;
+
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+
+            TrailerEntity te = (TrailerEntity) session.get(TrailerEntity.class, id);
+
+            System.out.println(te.getBarcode());
+            t.setBarcode(te.getBarcode());
+            t.setBarcodeFormat(te.getBarcodeFormat());
+            t.setScannedDate(te.getScannedDate());
+            t.setTrailerID(te.getTrailerId());
+
+            List<Container> containers = new ArrayList<>();
+            for(ContainerEntity c:te.getContainers()){
+                Container ce = new Container();
+                ce.setScannedDate(c.getScannedDate());
+                ce.setBarcode(c.getBarcode());
+                ce.setBarcodeFormat(c.getBarcodeFormat());
+                containers.add(ce);
+            }
+
+            List<Address> addresses = new ArrayList<>();
+            for(AddressEntity a:te.getAddresses()) {
+                Address ae = new Address();
+                ae.setFeature(a.getFeature());
+                ae.setAdmin(a.getAdmin());
+                ae.setLongitude(a.getLongitude());
+                ae.setLatitude(a.getLatitude());
+                ae.setThoroughfare(a.getThoroughfare());
+                ae.setLocality(a.getLocality());
+                ae.setPostal(a.getPostal());
+                addresses.add(ae);
+            }
+
+            t.setAddresses(addresses);
+            t.setContainers(containers);
+            session.getTransaction().commit();
+        }
+        catch(Exception ex) {
+            if(session != null) {
+                session.getTransaction().rollback();
+            }
+        }
+        finally {
+            if(session != null){
+                session.close();
+            }
+        }
+        return t;
     }
 
     public boolean saveTrailer(Trailer trailer) {

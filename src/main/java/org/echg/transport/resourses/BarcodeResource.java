@@ -22,6 +22,14 @@ public class BarcodeResource {
         return bs.getAllTrailers();
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{trailerId}")
+    public Trailer getTrailerById(@PathParam("trailerId") int trailerId) {
+
+        return bs.getTrailerById(trailerId);
+    }
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

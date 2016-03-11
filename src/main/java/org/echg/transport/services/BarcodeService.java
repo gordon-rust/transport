@@ -31,14 +31,15 @@ public class BarcodeService {
         //System.out.println("Insert");
         //return trailer;
     }
-/*
-    public boolean updateTrailerData(TrailerDTO trailer){
-        return trailerDAO.saveTrailer(trailer);
+
+    public Trailer getTrailerById(int id) {
+
+        return trailerDAO.getTrailerByID(id);
     }
-*/
+
     public List<Trailer> getAllTrailers(){
         // May need to convert trailer to trailer DTO
-        return (List<Trailer>) trailerDAO.getAllTrailers();
+        return trailerDAO.getAllTrailers();
     }
 
     public void removeBarcode(String barcode){

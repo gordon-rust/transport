@@ -11,6 +11,7 @@ import java.util.Set;
  */
 @XmlRootElement
 public class Trailer {
+    private int trailerID;
     private String barcode;
     private String barcodeFormat;
     private Date scannedDate;
@@ -20,13 +21,18 @@ public class Trailer {
     public Trailer(){
     }
 
-    public Trailer(String barcode, String barcodeFormat, Date scannedDate, List<Address> addresses, List<Container> containers) {
+    public Trailer(int trailerID, String barcode, String barcodeFormat, Date scannedDate, List<Address> addresses, List<Container> containers) {
+        this.trailerID = trailerID;
         this.barcode = barcode;
         this.barcodeFormat = barcodeFormat;
         this.scannedDate = scannedDate;
         this.addresses = addresses;
         this.containers = containers;
     }
+
+    public int getTrailerID() { return trailerID; }
+
+    public void setTrailerID(int trailerID) { this.trailerID = trailerID; }
 
     public String getBarcode() {
         return barcode;
