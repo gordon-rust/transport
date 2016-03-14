@@ -17,7 +17,8 @@ public class TrailerEntity implements Serializable{
     private Integer trailerId;
     private String barcode;
     private String barcodeFormat;
-    private Date scannedDate;
+    private Date scannedPickupDate;
+    private Date scannedDropoffDate;
     private Set<AddressEntity> addresses;
     private Set<ContainerEntity> containers;
 
@@ -51,14 +52,24 @@ public class TrailerEntity implements Serializable{
         this.barcodeFormat = barcodeFormat;
     }
 
-    @Column(name = "scanned_date")
+    @Column(name = "scanned_pickup_date")
     @Temporal(TemporalType.TIMESTAMP)
-    public Date getScannedDate() {
-        return scannedDate;
+    public Date getScannedPickupDate() {
+        return scannedPickupDate;
     }
 
-    public void setScannedDate(Date scannedDate) {
-        this.scannedDate = scannedDate;
+    public void setScannedPickupDate(Date scannedPickupDate) {
+        this.scannedPickupDate = scannedPickupDate;
+    }
+
+    @Column(name = "scanned_dropoff_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getScannedDropoffDate() {
+        return scannedDropoffDate;
+    }
+
+    public void setScannedDropoffDate(Date scannedDropoffDate) {
+        this.scannedDropoffDate = scannedDropoffDate;
     }
 
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "trailer")

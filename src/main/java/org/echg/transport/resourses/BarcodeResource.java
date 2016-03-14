@@ -37,15 +37,15 @@ public class BarcodeResource {
 
         return bs.insertTrailerData(trailer);
     }
-/*
+
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public boolean insertUnloadedTrailer(TrailerDTO trailer){
+    public Trailer updateTrailerData(Trailer trailer) {
 
         return bs.updateTrailerData(trailer);
     }
-*/
+
     @DELETE
     @Path("/{barcode}")
     public void deleteTrailer(@PathParam("barcode") String barcode) {

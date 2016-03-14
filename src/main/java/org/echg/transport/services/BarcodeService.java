@@ -18,7 +18,7 @@ public class BarcodeService {
     TrailerDAO trailerDAO = new TrailerDAO();
 
     public Trailer insertTrailerData(Trailer trailer){
-        trailer.setScannedDate(new Date());
+        trailer.setScannedPickupDate(new Date());
         Iterator<Container> contIterate = trailer.getContainers().iterator();
         while(contIterate.hasNext()) {
             contIterate.next().setScannedDate(new Date());
@@ -30,6 +30,11 @@ public class BarcodeService {
         return trailer;
         //System.out.println("Insert");
         //return trailer;
+    }
+
+    public Trailer updateTrailerData(Trailer trailer) {
+
+        return trailerDAO.updateTrailerById(trailer);
     }
 
     public Trailer getTrailerById(int id) {

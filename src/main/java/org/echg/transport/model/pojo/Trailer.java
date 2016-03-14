@@ -14,25 +14,31 @@ public class Trailer {
     private int trailerID;
     private String barcode;
     private String barcodeFormat;
-    private Date scannedDate;
+    private Date scannedPickupDate;
+    private Date scannedDropoffDate;
     private List<Address> addresses;
     private List<Container> containers;
 
     public Trailer(){
     }
 
-    public Trailer(int trailerID, String barcode, String barcodeFormat, Date scannedDate, List<Address> addresses, List<Container> containers) {
+    public Trailer(int trailerID, String barcode, String barcodeFormat, Date scannedPickupDate, Date scannedDropoffDate, List<Address> addresses, List<Container> containers) {
         this.trailerID = trailerID;
         this.barcode = barcode;
         this.barcodeFormat = barcodeFormat;
-        this.scannedDate = scannedDate;
+        this.scannedPickupDate = scannedPickupDate;
+        this.scannedDropoffDate = scannedDropoffDate;
         this.addresses = addresses;
         this.containers = containers;
     }
 
-    public int getTrailerID() { return trailerID; }
+    public int getTrailerID() {
+        return trailerID;
+    }
 
-    public void setTrailerID(int trailerID) { this.trailerID = trailerID; }
+    public void setTrailerID(int trailerID) {
+        this.trailerID = trailerID;
+    }
 
     public String getBarcode() {
         return barcode;
@@ -50,12 +56,20 @@ public class Trailer {
         this.barcodeFormat = barcodeFormat;
     }
 
-    public Date getScannedDate() {
-        return scannedDate;
+    public Date getScannedPickupDate() {
+        return scannedPickupDate;
     }
 
-    public void setScannedDate(Date scannedDate) {
-        this.scannedDate = scannedDate;
+    public void setScannedPickupDate(Date scannedPickupDate) {
+        this.scannedPickupDate = scannedPickupDate;
+    }
+
+    public Date getScannedDropoffDate() {
+        return scannedDropoffDate;
+    }
+
+    public void setScannedDropoffDate(Date scannedDropoffDate) {
+        this.scannedDropoffDate = scannedDropoffDate;
     }
 
     public List<Address> getAddresses() {

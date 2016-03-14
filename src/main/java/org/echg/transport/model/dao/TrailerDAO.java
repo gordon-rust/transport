@@ -34,7 +34,8 @@ public class TrailerDAO {
                 Trailer t = new Trailer();
                 t.setBarcode(trailers.get(i).getBarcode());
                 t.setBarcodeFormat(trailers.get(i).getBarcodeFormat());
-                t.setScannedDate(trailers.get(i).getScannedDate());
+                t.setScannedPickupDate(trailers.get(i).getScannedPickupDate());
+                t.setScannedDropoffDate(trailers.get(i).getScannedDropoffDate());
                 t.setTrailerID(trailers.get(i).getTrailerId());
 
                 List<Container> containers = new ArrayList<>();
@@ -88,10 +89,10 @@ public class TrailerDAO {
 
             TrailerEntity te = (TrailerEntity) session.get(TrailerEntity.class, id);
 
-            System.out.println(te.getBarcode());
             t.setBarcode(te.getBarcode());
             t.setBarcodeFormat(te.getBarcodeFormat());
-            t.setScannedDate(te.getScannedDate());
+            t.setScannedPickupDate(te.getScannedPickupDate());
+            t.setScannedDropoffDate(te.getScannedDropoffDate());
             t.setTrailerID(te.getTrailerId());
 
             List<Container> containers = new ArrayList<>();
@@ -133,6 +134,43 @@ public class TrailerDAO {
         return t;
     }
 
+    public Trailer updateTrailerById(Trailer trailer) {
+        Session session = null;
+
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+
+            TrailerEntity te = (TrailerEntity) session.get(TrailerEntity.class, trailer.getTrailerID());
+            te.setScannedDropoffDate(trailer.getScannedDropoffDate());
+
+            AddressEntity ae = new AddressEntity();
+            ae.setFeature(trailer.getAddresses().get(1).getFeature());
+            ae.setAdmin(trailer.getAddresses().get(1).getAdmin());
+            ae.setLongitude(trailer.getAddresses().get(1).getLongitude());
+            ae.setLatitude(trailer.getAddresses().get(1).getLatitude());
+            ae.setThoroughfare(trailer.getAddresses().get(1).getThoroughfare());
+            ae.setLocality(trailer.getAddresses().get(1).getLocality());
+            ae.setPostal(trailer.getAddresses().get(1).getPostal());
+            ae.setTrailer(te);
+            te.getAddresses().add(ae);
+
+            session.update(te);
+            session.getTransaction().commit();
+        }
+        catch(Exception ex) {
+            if(session != null) {
+                session.getTransaction().rollback();
+            }
+        }
+        finally {
+            if(session != null){
+                session.close();
+            }
+        }
+        return getTrailerByID(trailer.getTrailerID());
+    }
+
     public boolean saveTrailer(Trailer trailer) {
         Session session = null;
         boolean hasErrors = false;
@@ -144,7 +182,8 @@ public class TrailerDAO {
             TrailerEntity te = new TrailerEntity();
             te.setBarcode(trailer.getBarcode());
             te.setBarcodeFormat(trailer.getBarcodeFormat());
-            te.setScannedDate(trailer.getScannedDate());
+            te.setScannedPickupDate(trailer.getScannedPickupDate());
+            te.setScannedDropoffDate(trailer.getScannedDropoffDate());
             session.save(te);
 
             for(Container c:trailer.getContainers()){
